@@ -6,11 +6,11 @@ Repository for automated deployment/configuration of computing nodes associated 
 To deploy to a network planner node use:
 
     # setup baseline packages on machine
-    ssh `<host>` 'bash -s' < bootstrap.sh
+    ssh <host> 'bash -s' < bootstrap.sh
     # setup network planner specific packages, create np user and directories
-    fab -H `<host>` provision:system_type=`<system>`,branch=`<np_devops_branch>`
+    fab -H <host> provision:system_type=<system>,branch=<np_devops_branch>
     # deploy network planner as the np user (note that host_np_user should login as np user)
-    fab -H `<host_np_user>` deploy:system_type=`<system>`,branch=`<np_branch>`
+    fab -H <host_np_user> deploy:system_type=<system>,branch=<np_branch>
 
 Where `<system>` is one of:
 * `ss` - Single Server Mode
@@ -32,7 +32,7 @@ Main Components
 Caveat Emptor
 =============
 
-* You should have a reasonable understanding of Network Planner and it's architecture before using this (see:  github.com/modilabs/networkplanner)
+* You should have a reasonable understanding of Network Planner and it's architecture before using this (see:  github.com/SEL-Columbia/networkplanner)
 
 * Running the deploy task requires a yaml file (see sample.yaml) that contains important configuration information.  See fabfile.py for default file names.  It can be overridden by a config_env command line parameter.  
 
