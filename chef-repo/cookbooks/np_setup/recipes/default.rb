@@ -38,7 +38,7 @@ end
 bash "install_libspatialindex" do
     cwd "/tmp"
     code <<-EOH
-    git clone git://github.com/chrisnatali/libspatialindex.git
+    git clone https://github.com/libspatialindex/libspatialindex.git
     apt-get install -y automake libtool
     (cd libspatialindex && ./autogen.sh && ./configure && make && make install)
     ldconfig

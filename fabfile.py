@@ -17,8 +17,8 @@ import yaml
 
 DEFAULTS = {
     'home': '/var/www',
-    'repo': 'git://github.com/modilabs/networkplanner.git',
-    'devops_repo': 'git://github.com/chrisnatali/networkplanner-devops.git',
+    'repo': 'git://github.com/SEL-Columbia/networkplanner.git',
+    'devops_repo': 'git://github.com/SEL-Columbia/networkplanner-devops.git',
     'project': 'np',
     'system_type': 'ss', #defaults to provision/deploy single-server setup
     'branch': 'master'
@@ -112,6 +112,7 @@ def setup_env(**args):
     env.update(args)
     env.project_directory = os.path.join(env.home, env.project)
     env.pip_requirements_file = os.path.join(env.project_directory, 'requirements.txt')
+    env.pip_net_requirements_file = os.path.join(env.project_directory, 'requirements_network.txt')
 
 
 def upload_config():
@@ -138,6 +139,7 @@ def deploy(**args):
     with cd(env.project_directory):
         pull(**args)
         sudo("pip install -r %(pip_requirements_file)s" % env)
+        sudo("pip install -r %(pip_net_requirements_file)s" % env)
         upload_config()
         with settings(warn_only=True):
             env.deploy_fun()

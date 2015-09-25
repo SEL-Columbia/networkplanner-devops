@@ -10,7 +10,7 @@ To deploy to a network planner node use:
     # setup network planner specific packages, create np user and directories
     fab -H <host> provision:system_type=<system>,branch=<np_devops_branch>
     # deploy network planner as the np user (note that host_np_user should login as np user)
-    fab -H <host_np_user> deploy:system_type=<system>,branch=<np_branch>
+    fab -H <host_np_user> deploy:system_type=<system>,branch=<np_branch>,config_env=<my_config_env.yaml>
 
 Where `<system>` is one of:
 * `ss` - Single Server Mode
